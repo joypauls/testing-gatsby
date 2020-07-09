@@ -1,0 +1,2 @@
+run-dev:
+	gatsby develop
