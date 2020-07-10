@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 
 // for katex
-require(`katex/dist/katex.min.css`)
+require("katex/dist/katex.min.css")
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -30,6 +30,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           >
             {post.frontmatter.title}
           </h1>
+          <h3
+            style={{
+              marginTop: rhythm(1),
+              marginBottom: 0,
+            }}
+          >
+            {post.frontmatter.subtitle}
+          </h3>
           <p
             style={{
               ...scale(-1 / 5),
@@ -96,6 +104,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
+        subtitle
         date(formatString: "MMMM DD, YYYY")
         description
       }
