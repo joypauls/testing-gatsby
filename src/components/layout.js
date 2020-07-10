@@ -9,9 +9,9 @@ const Layout = ({ location, title, children }) => {
 
   if (location.pathname === rootPath) {
     header = (
-      <h1
+      <h2
         style={{
-          ...scale(1.5),
+          ...scale(1.2),
           marginBottom: rhythm(1.5),
           marginTop: 0,
         }}
@@ -25,7 +25,7 @@ const Layout = ({ location, title, children }) => {
         >
           {title}
         </Link>
-      </h1>
+      </h2>
     )
   } else {
     header = (
@@ -59,9 +59,9 @@ const Layout = ({ location, title, children }) => {
       <header>{header}</header>
       <main>{children}</main>
       <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
+        © {new Date().getFullYear()}, 
+        {'made with ❤ by '}
+        <a href="https://github.com/joypauls">joypauls</a>
       </footer>
     </div>
   )

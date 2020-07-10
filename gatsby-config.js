@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Applied Math Shitposts`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Joy P`,
+      summary: ` a person and stuff, does things occasionally`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `posting about what im thinking about or thought about at some point`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
     social: {
       twitter: `kylemathews`,
