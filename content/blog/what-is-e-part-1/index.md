@@ -25,7 +25,7 @@ $$f(t) = a^t$$
 
 where $$a \in \mathbb{R}^+$$ just to make it easy on us. Let's look at a plot showing $$f$$ for a few different values of $$a$$ to build some inuition:
 
-![]({{site.url}}/assets/img/growth.png){:class="img-responsive"}
+![](./growth.png)
 
 We can group the dynamics of this family into 3 categories:
 
