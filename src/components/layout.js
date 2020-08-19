@@ -1,7 +1,28 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+
 import React from "react"
 import { Link } from "gatsby"
 
 import { rhythm, scale } from "../utils/typography"
+
+import { Button } from 'rebass'
+
+
+const TestButton = ({ variant = "primary", ...props }) =>
+  <Button 
+  {...props} 
+  sx={{
+    appearance: "none",
+    display: "inline-block",
+    textAlign: "center",
+    border: 0,
+    borderRadius: 4,
+    variant: `buttons.${variant}`,
+  }}
+  >
+    Primary
+  </Button>
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -9,6 +30,7 @@ const Layout = ({ location, title, children }) => {
 
   if (location.pathname === rootPath) {
     header = (
+      <div>
       <h2
         style={{
           ...scale(1.2),
@@ -26,6 +48,8 @@ const Layout = ({ location, title, children }) => {
           {title}
         </Link>
       </h2>
+      <TestButton />
+      </div>
     )
   } else {
     header = (
