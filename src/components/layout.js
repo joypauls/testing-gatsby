@@ -16,7 +16,7 @@ const TestButton = ({ variant = "primary", ...props }) =>
     appearance: "none",
     display: "inline-block",
     textAlign: "center",
-    border: 0,
+    border: "2px solid",
     borderRadius: 4,
     variant: `buttons.${variant}`,
   }}

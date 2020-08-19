@@ -2,8 +2,9 @@ export default {
     colors: {
       text: "#333",
       background: "#fff",
-      primary: "#639",
+      primary: "#8b32eb",
       secondary: "#ff6347",
+      accent: "#ff7891"
     },
     fonts: {
       body: "system-ui, sans-serif",
@@ -21,4 +22,23 @@ export default {
     },
     fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
     space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
-  }
+    buttons: {
+        primary: {
+            color: "white",
+            bg: "primary",
+            borderColor: "accent",
+            "&:hover": {
+                color: "primary",
+                bg: "white",
+            },
+        },
+        secondary: {
+          color: "text",
+          bg: "secondary",
+          "&:hover": {
+          color: "secondary",
+          bg: "text",
+          },
+        },
+      },
+}
