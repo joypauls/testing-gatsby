@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 
 import { rhythm, scale } from "../utils/typography"
 
-import { Button } from 'rebass'
+import { Button, Flex, Text, Box } from 'rebass'
 
 
 const TestButton = ({ variant = "primary", ...props }) =>
@@ -18,6 +18,7 @@ const TestButton = ({ variant = "primary", ...props }) =>
     textAlign: "center",
     border: "2px solid",
     borderRadius: 4,
+    margin: "5px",
     variant: `buttons.${variant}`,
   }}
   >
@@ -48,7 +49,15 @@ const Layout = ({ location, title, children }) => {
           {title}
         </Link>
       </h2>
+      
+<Flex
+  alignItems='center'
+  justifyContent='center'
+  padding='1rem'>
       <TestButton />
+      <TestButton />
+      <TestButton />
+      </Flex>
       </div>
     )
   } else {
@@ -83,7 +92,7 @@ const Layout = ({ location, title, children }) => {
       <header>{header}</header>
       <main>{children}</main>
       <footer>
-        © {new Date().getFullYear()}, 
+        {/* © {new Date().getFullYear()},  */}
         {'made with ❤ by '}
         <a href="https://github.com/joypauls">joypauls</a>
       </footer>
