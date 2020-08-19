@@ -1,6 +1,6 @@
 ---
 title: Linear Regression Refresher
-subtitle: Part 1 - The Regression Problem
+subtitle: Part 1 - The Framework
 date: "2020-01-01"
 ---
 
@@ -8,12 +8,17 @@ Feel like you know what linear regression **is** but didn't learn the math, or j
 
 ## Gist
 
-> Linear regression is a method for modelling a process observed with data using simple assumptions.
+> Linear regression is a method for modelling a process with a quantitative output observed data and simple assumptions.
+
+
+Input -> System -> Output
+
+Input -> System + Noise -> Output
 
 
 ## Learning Regression
 
-If you are just looking for a refresher , you can skip this section.
+*If you are just looking for a refresher , you can skip this section.*
 
 I think one big stumbling block to learning about linear regression, especially for the first time, is that it's usually the introduction of several different concepts at once, all of which actually are pretty important! Whether or not these exact terms are used, to understand linear regression end-to-end you have to understand:
 
@@ -23,23 +28,36 @@ I think one big stumbling block to learning about linear regression, especially 
 
 ## The Regression Problem
 
-Let's consider a minimal version of the regression problem: given our data in the form of a dependent variable $$Y$$ and an independent variable $$X$$[^1], we want to find a function $$f$$ so that we can model the unknown process that generated our data. Our model looks like this,
+Let's consider a minimal version of the regression problem: given our data in the form of a dependent variable $$Y$$ and an independent variable $$X$$[^1], we want to find a function $$f$$ so that we can model the unknown system that generated our data. Our model looks like this,
 
 $$
 Y = f(X) + \epsilon
 $$
 
-where $$\epsilon$$ represents the error. This formulation is at the heart of everything we are doing, so let's linger here.
+where $$\epsilon$$ represents the error that comes from imperfect data[^2]. This formulation is at the heart of everything we are doing[^3], so let's linger here for a minute. 
 
-We will assume as usual that $$\epsilon \sim N(0, \sigma_{\epsilon}^2)$$ and is independent from the input $$X$$. Why is this important to point out? Well one thing we often are interested is the expected value of Y given an input. Formulating this will help us figure out where to go next:
+### What is $$f$$?
+
+Typically there is no actual hope of finding the "real" $$f$$ - we can't possibly account for all the factors that go into real-world phenomena! There are unmeasured variables, changing conditions, and interns who knock over test tubes in the lab... *there is always noise*. So what we do instead is estimate $$f$$, to make inferences and predictions about $$y_i \in Y$$. The equation we actually deal with is then
 
 $$
-E[Y|X=x] = E[f(X) + \epsilon|X=x] = E[f(x)]
+\hat{y_i} = \hat{f}(x_i) + \epsilon
+$$
+
+I will keep using $$f$$ when talking about the function of $$X$$ we are trying to find though.
+
+
+We will assume as usual that $$\epsilon$$ is Normally distributed and is independent from $$X$$. Why is this important? Well one thing we often are interested is the expected value of Y given an input. Formulating this will help us figure out where to go next:
+
+$$
+\begin{aligned} E[Y|X=x] &= E[f(X) + \epsilon|X=x] \\
+&= E[f(x)] + E[\epsilon] \\
+&= E[f(x)] \end{aligned}
 $$
 
 so what we see is that all we have to do to estimate the expected value of $$Y$$ is calculate $$E[f(x)]$$ - pretty cool!.
 
-> When $$f$$ is a linear function of $$X$$, we call this task *linear regression*.
+> When $$f$$ is a linear function of $$X$$, we call this task **linear regression**.
 
 ### Assumption: Our Data Is Imperfect
 
@@ -64,8 +82,11 @@ In introductory stats, the loss function we use is almost always the **squared e
 
 ## Why not another loss function?
 
-
+kjhsokfhsagld
 
 ---
 
-[^1]: Most of this stuff is generalizable, but for simplicity assume $$Y,X \in \mathbb{R}$$
+[^1]: Most of this stuff is generalizable, but for simplicity assume $$Y \in \mathbb{R}, X \in \mathbb{R}^m$$
+[^2]: Usually called the *irreducible error*
+[^3]: This really isn't specific to regression either, but I think limiting out field of view will help us understand the framework!
+
