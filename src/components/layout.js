@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
+import { useColorMode } from 'theme-ui'
+
 import React from "react"
 import { Link } from "gatsby"
 
@@ -29,6 +31,10 @@ const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   let header
 
+  const [colorMode, setColorMode] = useColorMode()
+
+  const nextColorMode = colorMode === 'light' ? 'dark' : 'light'
+
   if (location.pathname === rootPath) {
     header = (
       <div>
@@ -37,6 +43,9 @@ const Layout = ({ location, title, children }) => {
           ...scale(1.2),
           marginBottom: rhythm(1.5),
           marginTop: 0,
+        }}
+        sx={{
+          color: "text",
         }}
       >
         <Link
@@ -49,6 +58,12 @@ const Layout = ({ location, title, children }) => {
           {title}
         </Link>
       </h2>
+
+      <button onClick={ e => {
+        setColorMode(nextColorMode)
+      }}>
+        Change color mode
+      </button>
       
 <Flex
   alignItems='center'

@@ -3,8 +3,16 @@ export default {
       text: "#333",
       background: "#fff",
       primary: "#8b32eb",
-      secondary: "#ff6347",
-      accent: "#ff7891"
+      secondary: "#ff7891",
+    //   accent: "#ff7891",
+      modes: {
+        dark: {
+          text: '#fff',
+          background: '#000',
+          primary: "#8b32eb",
+          secondary: "#ff7891",
+        }
+      }
     },
     fonts: {
       body: "system-ui, sans-serif",
@@ -16,6 +24,9 @@ export default {
       heading: 700,
       bold: 700,
     },
+    shadows: {
+        textShadow: "none",
+    },
     lineHeights: {
       body: 1.5,
       heading: 1.125,
@@ -26,7 +37,7 @@ export default {
         primary: {
             color: "white",
             bg: "primary",
-            borderColor: "accent",
+            borderColor: "secondary",
             "&:hover": {
                 color: "primary",
                 bg: "white",
