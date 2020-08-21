@@ -8,7 +8,9 @@ import { Link } from "gatsby"
 
 import { rhythm, scale } from "../utils/typography"
 
-import { Button, Flex, Text, Box } from 'rebass'
+import { Button, Flex, Text, Box } from "rebass"
+
+import ModeSwitch from "./misc/ModeSwitch/ModeSwitch.js"
 
 
 const TestButton = ({ variant = "primary", ...props }) =>
@@ -38,10 +40,14 @@ const Layout = ({ location, title, children }) => {
   if (location.pathname === rootPath) {
     header = (
       <div>
-      <h2
+        <Flex
+  alignItems='center'
+  justifyContent='space-between'
+  padding='1rem'>
+      <h3
         style={{
           ...scale(1.2),
-          marginBottom: rhythm(1.5),
+          // marginBottom: rhythm(1.5),
           marginTop: 0,
         }}
         sx={{
@@ -57,13 +63,16 @@ const Layout = ({ location, title, children }) => {
         >
           {title}
         </Link>
-      </h2>
+      </h3>
 
-      <button onClick={ e => {
-        setColorMode(nextColorMode)
-      }}>
-        Change color mode
-      </button>
+          {/* <Button onClick={ e => {setColorMode(nextColorMode)}}>Mode</Button> */}
+          <ModeSwitch handleToggle={ e => {setColorMode(nextColorMode)} }></ModeSwitch>
+      </Flex>
+
+      {/* <Switch onChange={ e => {setColorMode(nextColorMode)}} /> */}
+
+
+      
       
 <Flex
   alignItems='center'
