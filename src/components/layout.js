@@ -17,8 +17,9 @@ const NavButton = ({ variant = "primary", ...props }) => {
         appearance: "none",
         display: "inline-block",
         textAlign: "center",
-        border: "2px solid",
-        borderRadius: 4,
+        fontSize: "medium",
+        border: "3px solid",
+        borderRadius: "2rem",
         margin: "5px",
         variant: `buttons.${variant}`,
       }}
@@ -52,11 +53,17 @@ const Layout = ({ location, title, children }) => {
   alignItems='center'
   justifyContent='space-between'
   padding='1rem'>
+      <Box
+        style={{
+          // ...scale(1.2),
+          margin: rhythm(1),
+        }}
+      >
       <h3
         style={{
-          ...scale(1.2),
+          // ...scale(1.2),
           // marginBottom: rhythm(1.5),
-          marginTop: 0,
+          // marginTop: 0,
         }}
         sx={{
           color: "text",
@@ -72,6 +79,17 @@ const Layout = ({ location, title, children }) => {
           {title}
         </Link>
       </h3>
+      <h5
+        style={{
+          // ...scale(1.2),
+          // marginBottom: rhythm(1.5),
+          marginTop: 0,
+          color: "inherit"
+        }}
+      >
+        Blogging about data science, statistics, mathematics, and coding
+      </h5>
+      </Box>
           <ModeSwitch mode={ colorMode } handleToggle={ () => setColorMode(nextColorMode) } />
       </Flex>
 
@@ -113,12 +131,17 @@ const Layout = ({ location, title, children }) => {
       style={{
         marginLeft: `auto`,
         marginRight: `auto`,
-        maxWidth: rhythm(24),
+        maxWidth: rhythm(30),
         padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
       }}
     >
       <header>{header}</header>
-      <main>{children}</main>
+      <main
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >{children}</main>
       <hr />
       <footer>
         {/* © {new Date().getFullYear()},  */}

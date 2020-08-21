@@ -44,12 +44,15 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
           <Card sx={{
-            p: 1,
-            borderRadius: 5,
+            p: rhythm(1/4),
+            borderRadius: 4,
             // boxShadow: '0 0 8px rgba(0, 0, 0, .25)',
             border: "solid 3px",
             borderColor: "primary",
             marginBottom: rhythm(2),
+            width: "100%",
+            maxWidth: rhythm(24),
+            alignSelf: "center", // should put this in css in layout as a selector of child elements
           }}>
           <article key={node.fields.slug}>
             <header>

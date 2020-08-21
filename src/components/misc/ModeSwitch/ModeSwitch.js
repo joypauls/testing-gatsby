@@ -28,8 +28,8 @@ const ModeSwitch = ({ mode, handleToggle }) => {
       >
         <span className="react-switch-button" />
         <div style={{display: "flex", alignItems: 'center',justifyContent: 'space-between', width: "100%", padding: "4px"}}>
-          <FaRegMoon color="#FFF" />
-          <FaRegSun color="#FFF" />
+          <FaRegMoon color="#FFF" size="0.8rem" />
+          <FaRegSun color="#FFF" size="0.8rem" />
         </div>
       </label>
     </>

@@ -4,8 +4,6 @@ subtitle: Part 1 - Growth
 date: "2020-01-01"
 ---
 
-## Gist
-
 > "The exponential function ... is the instrument used, in one form or another, to describe the behavior of growing things[^1]."
 
 ## Before We Dive In
@@ -33,7 +31,9 @@ We can group the dynamics of this family into 3 categories:
 - When $$a=1$$, $$f$$ is constant
 - When $$a>1$$, we have **exponential growth**
 
-If we inspect the plot closer, it looks pretty clear that while our inital value $$f(0)$$ is always $$1$$, the derivative at $$0$$, $$f^{\prime}(0)$$, varies wildly. How does this impact the dynamics of $$f$$?
+### Important Property: $$f^{\prime}(t) \propto f(t)$$
+
+If we inspect the plonpmt closer, it looks pretty clear that while our inital value $$f(0)$$ is always $$1$$, the derivative at $$0$$, $$f^{\prime}(0)$$, varies wildly. How does this impact the dynamics of $$f$$?
 
 $$
 \begin{aligned} f^{\prime}(t) &= \frac{d}{dt} a^t \\
@@ -42,9 +42,6 @@ $$
 &= a^t \lim_{h \to 0} \frac{a^{h} - 1}{h} \\
 &= f^{\prime}(0) a^t \end{aligned}
 $$
-
-
-### Important Property: $$f^{\prime}(t) \propto f(t)$$
 
 
 I think it's worth stopping here for a second because this really is a special property of exponential growth[^2]. What this says is that to know the dervative at any $$t_i$$, all we need to know is $$f(t_i)$$ and $$f^{\prime}(0)$$, i.e its rate of change is *proportional to itself*. If we let $$k = f^{\prime}(0)$$, then we have
@@ -85,7 +82,7 @@ $$
 a \approx (1 + 0.000001)^{\frac{1}{0.000001}} \approx 2.71828... \approx e
 $$
 
-And we have finally arrived at our first definition of Euler's number:
+And we have finally arrived at our first definition of Euler's number! `:sparkles:`
 
 $$
 e = \lim_{h \to 0} (h+1)^{\frac{1}{h}}
@@ -96,11 +93,17 @@ $$
 
 
 
-## Why $$e^t$$ is Everywhere in Calculus (Optional)
+## Why is $$e^t$$ Everywhere in Calculus?
 
-We know have the necessary intuition to understand one of the reasons why the function $$e^{t}$$ is so important early on in learning calculus: *it is the most useful prototype model for exponential growth*. Using the base $$e$$ lets us take advantage of it's properties even when extending the model to a more useful form, $$e^{rt}$$ where $$r \in \mathbb{R}$$. Here's why. Suppose we are told that a real-world process can be modelled as $$3^{0.7t}$$. We could work with the derivative of this function by finding $$k$$ with the limit definition like we did earlier, but that's no fun... we can do better! Let's write this with base $$e$$[^3]:
+We know have the necessary intuition to understand one of the reasons why the function $$e^{t}$$ is so important early on in learning calculus: *it is the most useful prototype model for exponential growth*. Using the base $$e$$ lets us take advantage of it's properties even when extending the model to a more useful form, $$e^{rt}$$ where $$r \in \mathbb{R}$$. Here's why. 
 
-$$3^{0.7t} = e^{rt} \implies (3^{0.7})^{t} = (e^r)^t \implies r = \ln 3^{0.7} \approx 0.769 $$
+### Example
+
+Suppose we are told that a real-world process can be modelled as $$3^{0.7t}$$. We could work with the derivative of this function by finding $$k$$ with the limit definition like we did earlier, but that's no fun... we can do better! Let's write this with base $$e$$[^3]:
+
+$$
+3^{0.7t} = e^{rt} \implies (3^{0.7})^{t} = (e^r)^t \implies r = \ln 3^{0.7} \approx 0.769
+$$
 
 so we can model the process as $$e^{0.769t}$$ (or with a more precise approximation of $$r$$) and still take advantage of all the nifty differentiation properties!
 

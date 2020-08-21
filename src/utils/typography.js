@@ -1,5 +1,5 @@
 import Typography from "typography"
-import fairyGatesTheme from "typography-theme-fairy-gates"
+import lincolnTheme from "typography-theme-lincoln"
 
 // fairyGatesTheme.overrideThemeStyles = () => {
 //   return {
@@ -11,7 +11,7 @@ import fairyGatesTheme from "typography-theme-fairy-gates"
 
 // delete fairyGatesTheme.googleFonts
 
-fairyGatesTheme.overrideThemeStyles = ({ rhythm }, options) => {
+lincolnTheme.overrideThemeStyles = ({ rhythm }, options) => {
   const linkColor = "#8B32EB"
   return {
     a: {
@@ -29,7 +29,8 @@ fairyGatesTheme.overrideThemeStyles = ({ rhythm }, options) => {
   }
 }
 
-const typography = new Typography(fairyGatesTheme)
+const typography = new Typography(lincolnTheme)
+
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {

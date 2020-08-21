@@ -2,9 +2,9 @@ export default {
     useLocalStorage: false, // this disables persisting color scheme for user
     colors: {
       text: "#333",
-      background: "#F0EBEF",
+      background: "#f5f0f4",
       primary: "#8b32eb",
-      secondary: "#ff7891",
+      secondary: "#e86d84",
     //   accent: "#ff7891",
       modes: {
         dark: {
@@ -36,8 +36,8 @@ export default {
     space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
     buttons: {
         primary: {
-            color: "white",
-            bg: "primary",
+            color: "secondary",
+            bg: "transparent",
             borderColor: "secondary",
             "&:hover": {
                 color: "primary",
@@ -45,12 +45,12 @@ export default {
             },
         },
         secondary: {
-          color: "text",
-          bg: "secondary",
-          "&:hover": {
-          color: "secondary",
-          bg: "text",
-          },
+            color: "text",
+            bg: "secondary",
+            "&:hover": {
+                color: "secondary",
+                bg: "text",
+            },
         },
       },
 }
