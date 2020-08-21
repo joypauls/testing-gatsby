@@ -1,9 +1,14 @@
 import React from 'react';
+import { WiDaySunny, WiStars } from 'react-icons/wi';
+
 import './ModeSwitch.css';
+
+const LIGHT_MODE_COLOR = "#D9DE97"
+const DARK_MODE_COLOR = "#9A91B3"
 
 const ModeSwitch = ({ mode, handleToggle }) => {
 
-  var color = mode === "default" ?  "#DFE861" : "#7C7394"
+  var color = mode === "default" ?  LIGHT_MODE_COLOR : DARK_MODE_COLOR
   var isChecked = mode !== "default"
 
   return (
@@ -20,7 +25,11 @@ const ModeSwitch = ({ mode, handleToggle }) => {
         htmlFor={`react-switch-new`}
         style={{ background: color }}
       >
-        <span className={`react-switch-button`} />
+        <span className="react-switch-button" />
+        <div style={{display: "flex", alignItems: 'center',justifyContent: 'space-between', width: "100%", padding: "4px"}}>
+          <WiStars color="#FFF" size="1.2rem" />
+          <WiDaySunny color="#FFF" size="1.2rem" />
+        </div>
       </label>
     </>
   );

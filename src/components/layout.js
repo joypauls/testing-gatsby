@@ -1,47 +1,45 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx } from "theme-ui";
+import { useColorMode } from "theme-ui";
+import { React, useState } from "react";
+import { Link } from "gatsby";
+import { rhythm, scale } from "../utils/typography";
+import { Button, Flex, Text, Box } from "rebass";
 
-import { useColorMode } from "theme-ui"
-
-import { React, useState } from "react"
-import { Link } from "gatsby"
-
-import { rhythm, scale } from "../utils/typography"
-
-import { Button, Flex, Text, Box } from "rebass"
-
-import ModeSwitch from "./misc/ModeSwitch/ModeSwitch.js"
+import ModeSwitch from "./misc/ModeSwitch/ModeSwitch.js";
 
 
-const TestButton = ({ variant = "primary", ...props }) =>
-  <Button 
-  {...props} 
-  sx={{
-    appearance: "none",
-    display: "inline-block",
-    textAlign: "center",
-    border: "2px solid",
-    borderRadius: 4,
-    margin: "5px",
-    variant: `buttons.${variant}`,
-  }}
-  >
-    Primary
-  </Button>
+const NavButton = ({ variant = "primary", ...props }) => {
+  return (
+    <Button 
+      {...props} 
+      sx={{
+        appearance: "none",
+        display: "inline-block",
+        textAlign: "center",
+        border: "2px solid",
+        borderRadius: 4,
+        margin: "5px",
+        variant: `buttons.${variant}`,
+      }}
+    >
+      { props.text }
+    </Button>
+  )
+};
 
-
-const handleToggle = (nextMode, setNextMode) => {
-  // setValue(nextValue);
-  setNextMode(nextMode);
-}
+// const handleToggle = (nextMode, setNextMode) => {
+//   // setValue(nextValue);
+//   setNextMode(nextMode);
+// }
 
 
 const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  let header
+  const rootPath = `${__PATH_PREFIX__}/`;
+  let header;
 
-  const [colorMode, setColorMode] = useColorMode()
-  const nextColorMode = colorMode === 'default' ? 'dark' : 'default'
+  const [colorMode, setColorMode] = useColorMode();
+  const nextColorMode = colorMode === 'default' ? 'dark' : 'default';
 
   // const [value, setValue] = useState(false);
 
@@ -74,12 +72,8 @@ const Layout = ({ location, title, children }) => {
           {title}
         </Link>
       </h3>
-
-          {/* <Button onClick={ e => {setColorMode(nextColorMode)}}>Mode</Button> */}
-          <ModeSwitch mode={colorMode} handleToggle={() => handleToggle(nextColorMode, setColorMode) } />
+          <ModeSwitch mode={ colorMode } handleToggle={ () => setColorMode(nextColorMode) } />
       </Flex>
-
-      {/* <Switch onChange={ e => {setColorMode(nextColorMode)}} /> */}
 
 
       
@@ -87,10 +81,10 @@ const Layout = ({ location, title, children }) => {
 <Flex
   alignItems='center'
   justifyContent='center'
-  padding='1rem'>
-      <TestButton />
-      <TestButton />
-      <TestButton />
+  paddingBottom='1rem'>
+      <NavButton text="Categories" />
+      <NavButton text="Visualizations" />
+      <NavButton text="About" />
       </Flex>
       </div>
     )
@@ -134,4 +128,4 @@ const Layout = ({ location, title, children }) => {
   )
 }
 
-export default Layout
+export default Layout;
