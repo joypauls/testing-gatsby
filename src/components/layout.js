@@ -3,7 +3,7 @@ import { jsx } from "theme-ui"
 
 import { useColorMode } from 'theme-ui'
 
-import React from "react"
+import { React, useState } from "react"
 import { Link } from "gatsby"
 
 import { rhythm, scale } from "../utils/typography"
@@ -29,13 +29,23 @@ const TestButton = ({ variant = "primary", ...props }) =>
     Primary
   </Button>
 
+
+const handleToggle = (nextValue, setValue, nextMode, setNextMode) => {
+  setValue(nextValue);
+  setNextMode(nextMode);
+}
+
+
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   let header
 
   const [colorMode, setColorMode] = useColorMode()
-
   const nextColorMode = colorMode === 'light' ? 'dark' : 'light'
+
+  const [value, setValue] = useState(false);
+
+
 
   if (location.pathname === rootPath) {
     header = (
@@ -66,7 +76,7 @@ const Layout = ({ location, title, children }) => {
       </h3>
 
           {/* <Button onClick={ e => {setColorMode(nextColorMode)}}>Mode</Button> */}
-          <ModeSwitch handleToggle={ e => {setColorMode(nextColorMode)} }></ModeSwitch>
+          <ModeSwitch isOn={value} handleToggle={() => handleToggle(!value, setValue, nextColorMode, setColorMode) } />
       </Flex>
 
       {/* <Switch onChange={ e => {setColorMode(nextColorMode)}} /> */}

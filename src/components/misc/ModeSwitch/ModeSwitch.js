@@ -14,6 +14,7 @@ const ModeSwitch = ({ isOn, handleToggle }) => {
       <label
         className="react-switch-label"
         htmlFor={`react-switch-new`}
+        style={{ background: !isOn && '#06D6A0' }}
       >
         <span className={`react-switch-button`} />
       </label>
