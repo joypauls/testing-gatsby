@@ -1,5 +1,6 @@
-import React from 'react';
-import { WiDaySunny, WiStars } from 'react-icons/wi';
+import React from "react";
+import { WiDaySunny, WiStars } from "react-icons/wi";
+import { FaRegMoon, FaRegSun } from "react-icons/fa";
 
 import './ModeSwitch.css';
 
@@ -27,8 +28,8 @@ const ModeSwitch = ({ mode, handleToggle }) => {
       >
         <span className="react-switch-button" />
         <div style={{display: "flex", alignItems: 'center',justifyContent: 'space-between', width: "100%", padding: "4px"}}>
-          <WiStars color="#FFF" size="1.2rem" />
-          <WiDaySunny color="#FFF" size="1.2rem" />
+          <FaRegMoon color="#FFF" />
+          <FaRegSun color="#FFF" />
         </div>
       </label>
     </>

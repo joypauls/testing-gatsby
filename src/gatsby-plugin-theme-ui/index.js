@@ -2,14 +2,14 @@ export default {
     useLocalStorage: false, // this disables persisting color scheme for user
     colors: {
       text: "#333",
-      background: "#fff",
+      background: "#F0EBEF",
       primary: "#8b32eb",
       secondary: "#ff7891",
     //   accent: "#ff7891",
       modes: {
         dark: {
           text: '#fff',
-          background: '#000',
+          background: '#241a23',
           primary: "#8b32eb",
           secondary: "#ff7891",
         }

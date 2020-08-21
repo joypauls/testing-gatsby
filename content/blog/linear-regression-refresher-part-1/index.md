@@ -1,6 +1,7 @@
 ---
 title: Linear Regression Refresher
 subtitle: Part 1 - The Framework
+description: Learn linear regression more deeply
 date: "2020-01-01"
 ---
 

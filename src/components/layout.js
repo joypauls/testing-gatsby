@@ -81,7 +81,7 @@ const Layout = ({ location, title, children }) => {
 <Flex
   alignItems='center'
   justifyContent='center'
-  paddingBottom='1rem'>
+  marginBottom='5rem'>
       <NavButton text="Categories" />
       <NavButton text="Visualizations" />
       <NavButton text="About" />
@@ -119,6 +119,7 @@ const Layout = ({ location, title, children }) => {
     >
       <header>{header}</header>
       <main>{children}</main>
+      <hr />
       <footer>
         {/* © {new Date().getFullYear()},  */}
         {'made with ❤ by '}
