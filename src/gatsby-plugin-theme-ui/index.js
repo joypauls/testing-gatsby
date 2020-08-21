@@ -1,4 +1,5 @@
 export default {
+    useLocalStorage: false, // this disables persisting color scheme for user
     colors: {
       text: "#333",
       background: "#fff",

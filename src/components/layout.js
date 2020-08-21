@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-import { useColorMode } from 'theme-ui'
+import { useColorMode } from "theme-ui"
 
 import { React, useState } from "react"
 import { Link } from "gatsby"
@@ -30,8 +30,8 @@ const TestButton = ({ variant = "primary", ...props }) =>
   </Button>
 
 
-const handleToggle = (nextValue, setValue, nextMode, setNextMode) => {
-  setValue(nextValue);
+const handleToggle = (nextMode, setNextMode) => {
+  // setValue(nextValue);
   setNextMode(nextMode);
 }
 
@@ -41,9 +41,9 @@ const Layout = ({ location, title, children }) => {
   let header
 
   const [colorMode, setColorMode] = useColorMode()
-  const nextColorMode = colorMode === 'light' ? 'dark' : 'light'
+  const nextColorMode = colorMode === 'default' ? 'dark' : 'default'
 
-  const [value, setValue] = useState(false);
+  // const [value, setValue] = useState(false);
 
 
 
@@ -76,14 +76,14 @@ const Layout = ({ location, title, children }) => {
       </h3>
 
           {/* <Button onClick={ e => {setColorMode(nextColorMode)}}>Mode</Button> */}
-          <ModeSwitch isOn={value} handleToggle={() => handleToggle(!value, setValue, nextColorMode, setColorMode) } />
+          <ModeSwitch mode={colorMode} handleToggle={() => handleToggle(nextColorMode, setColorMode) } />
       </Flex>
 
       {/* <Switch onChange={ e => {setColorMode(nextColorMode)}} /> */}
 
 
       
-      
+  
 <Flex
   alignItems='center'
   justifyContent='center'

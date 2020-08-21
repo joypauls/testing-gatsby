@@ -1,11 +1,15 @@
 import React from 'react';
 import './ModeSwitch.css';
 
-const ModeSwitch = ({ isOn, handleToggle }) => {
+const ModeSwitch = ({ mode, handleToggle }) => {
+
+  var color = mode === "default" ?  "#DFE861" : "#7C7394"
+  var isChecked = mode !== "default"
+
   return (
     <>
       <input
-        checked={isOn}
+        checked={isChecked}
         onChange={handleToggle}
         className="react-switch-checkbox"
         id={`react-switch-new`}
@@ -14,7 +18,7 @@ const ModeSwitch = ({ isOn, handleToggle }) => {
       <label
         className="react-switch-label"
         htmlFor={`react-switch-new`}
-        style={{ background: !isOn && '#06D6A0' }}
+        style={{ background: color }}
       >
         <span className={`react-switch-button`} />
       </label>
