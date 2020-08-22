@@ -1,14 +1,15 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import React from "react"
-import { PageProps, Link, graphql } from "gatsby"
+import React from "react";
+import { PageProps, Link, graphql } from "gatsby";
 import { Button, Flex, Text, Box, Card } from "rebass";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import { rhythm } from "../utils/typography";
 
+// post data from graphql
 type Data = {
   site: {
     siteMetadata: {
@@ -30,9 +31,54 @@ type Data = {
       }
     }[]
   }
-}
+};
+
+const postCardStyle = {
+  p: rhythm(1/2),
+  borderRadius: 4,
+  // boxShadow: '0 0 8px rgba(0, 0, 0, .25)',
+  border: "solid 4px",
+  borderColor: "primary",
+  marginBottom: rhythm(2),
+  width: "100%",
+  maxWidth: rhythm(24),
+  alignSelf: "center", // should put this in css in layout as a selector of child elements
+};
+
+const PostCard = ({...props}) => {
+  return (
+    <Card sx={postCardStyle}>
+      <article key={props.slug}>
+        <header>
+          <h3
+            style={{
+              marginTop: rhythm(1 / 2),
+              marginBottom: rhythm(1 / 4),
+            }}
+          >
+            <Link style={{ boxShadow: `none` }} to={props.slug}>
+              {props.title}
+            </Link>
+          </h3>
+          <small>{props.title}</small>
+        </header>
+        <section>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: props.description || props.excerpt,
+            }}
+            style={{
+              marginBottom: rhythm(1 / 2),
+            }}
+          />
+        </section>
+      </article>
+    </Card>
+  );
+};
 
 const BlogIndex = ({ data, location }: PageProps<Data>) => {
+
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
@@ -43,51 +89,21 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
-          <Card sx={{
-            p: rhythm(1/4),
-            borderRadius: 4,
-            // boxShadow: '0 0 8px rgba(0, 0, 0, .25)',
-            border: "solid 3px",
-            borderColor: "primary",
-            marginBottom: rhythm(2),
-            width: "100%",
-            maxWidth: rhythm(24),
-            alignSelf: "center", // should put this in css in layout as a selector of child elements
-          }}>
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginTop: rhythm(1 / 2),
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-                style={{
-                  marginBottom: rhythm(1 / 2),
-                }}
-              />
-            </section>
-          </article>
-          </Card>
+          <PostCard
+            title={node.frontmatter.title}
+            slug={node.fields.slug}
+            description={node.frontmatter.description}
+            excerpt={node.excerpt}
+          />
         )
       })}
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogIndex
+export default BlogIndex;
 
+// query to get posts
 export const pageQuery = graphql`
   query {
     site {
@@ -111,4 +127,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
