@@ -14,6 +14,7 @@ type Data = {
   site: {
     siteMetadata: {
       title: string
+      description: string
     }
   }
   allMarkdownRemark: {
@@ -36,7 +37,7 @@ type Data = {
 const postCardStyle = {
   p: rhythm(1/2),
   borderRadius: 4,
-  // boxShadow: '0 0 8px rgba(0, 0, 0, .25)',
+  boxShadow: '0 0 8px rgba(0, 0, 0, .25)',
   border: "solid 4px",
   borderColor: "primary",
   marginBottom: rhythm(2),
@@ -60,7 +61,7 @@ const PostCard = ({...props}) => {
               {props.title}
             </Link>
           </h3>
-          <small>{props.title}</small>
+          <small>{props.date}</small>
         </header>
         <section>
           <p
@@ -79,11 +80,12 @@ const PostCard = ({...props}) => {
 
 const BlogIndex = ({ data, location }: PageProps<Data>) => {
 
-  const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
+  const siteTitle = data.site.siteMetadata.title;
+  const siteDescription = data.site.siteMetadata.description;
+  const posts = data.allMarkdownRemark.edges;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={siteTitle} description={siteDescription}>
       <SEO title="All posts" />
       {/* <Bio /> */}
       {posts.map(({ node }) => {
@@ -94,6 +96,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
             slug={node.fields.slug}
             description={node.frontmatter.description}
             excerpt={node.excerpt}
+            date={node.frontmatter.date}
           />
         )
       })}
@@ -109,6 +112,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {

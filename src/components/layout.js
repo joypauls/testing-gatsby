@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { useColorMode } from "theme-ui";
-import { React, useState } from "react";
+import { React, useState, Fragment } from "react";
 import { Link } from "gatsby";
 import { rhythm, scale } from "../utils/typography";
 import { Button, Flex, Text, Box } from "rebass";
@@ -36,7 +36,7 @@ const NavButton = ({ variant = "primary", ...props }) => {
 // }
 
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, title, description, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   let header;
 
@@ -73,7 +73,7 @@ const Layout = ({ location, title, children }) => {
           color: "text",
         }}
       >
-        <IoMdStats size="2rem" style={{ marginRight: "1rem" }}/>
+        <IoMdStats sx={{color: "secondary"}} size="2rem" style={{ marginRight: "1rem" }}/>
         <Link
           style={{
             boxShadow: `none`,
@@ -81,7 +81,7 @@ const Layout = ({ location, title, children }) => {
           }}
           to={`/`}
         >
-          {title}
+          { title }
         </Link>
       </h3>
       <h5
@@ -92,7 +92,7 @@ const Layout = ({ location, title, children }) => {
           color: "inherit"
         }}
       >
-        Blogging about data science, statistics, mathematics, and coding
+        { description }
       </h5>
       </Box>
           <ModeSwitch mode={ colorMode } handleToggle={ () => setColorMode(nextColorMode) } />
@@ -132,6 +132,31 @@ const Layout = ({ location, title, children }) => {
     )
   }
   return (
+    <Fragment>
+    <div
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        backgroundColor: "#000000",
+        width: "100%",
+      }}
+    >
+      <div 
+        style={{
+          width: "800px", 
+       margin: "0 auto", 
+       padding: "10px",
+       border: "1px solid #000",
+       textAlign: "center"
+        }}
+      >
+        <h3 style={{color: "#FFFFFF", margin: 0,}}>
+        Black Lives Matter
+        </h3>
+      </div>
+    </div>
+    
     <div
       style={{
         marginLeft: `auto`,
@@ -154,7 +179,8 @@ const Layout = ({ location, title, children }) => {
         <a href="https://github.com/joypauls">joypauls</a>
       </footer>
     </div>
-  )
+    </Fragment>
+  );
 }
 
 export default Layout;
