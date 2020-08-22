@@ -1,7 +1,7 @@
 ---
 title: Linear Regression Refresher
 subtitle: Part 1 - The Framework
-description: Learn linear regression more deeply
+description: This is text to show on summary page instead of just taking the first lines of post
 date: "2020-01-01"
 ---
 

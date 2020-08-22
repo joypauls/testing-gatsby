@@ -17,6 +17,7 @@ const ModeSwitch = ({ mode, handleToggle }) => {
       <input
         checked={isChecked}
         onChange={handleToggle}
+        role="switch"
         className="react-switch-checkbox"
         id={`react-switch-new`}
         type="checkbox"

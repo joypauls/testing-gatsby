@@ -5,6 +5,7 @@ import { React, useState } from "react";
 import { Link } from "gatsby";
 import { rhythm, scale } from "../utils/typography";
 import { Button, Flex, Text, Box } from "rebass";
+import { IoMdStats } from "react-icons/io";
 
 import ModeSwitch from "./misc/ModeSwitch/ModeSwitch.js";
 
@@ -59,16 +60,20 @@ const Layout = ({ location, title, children }) => {
           margin: rhythm(1),
         }}
       >
+        {/* <img src="https://img.icons8.com/ultraviolet/80/000000/normal-distribution-histogram.png"/> */}
       <h3
         style={{
           // ...scale(1.2),
           // marginBottom: rhythm(1.5),
           // marginTop: 0,
+          display: "flex",
+          alignItems: "center",
         }}
         sx={{
           color: "text",
         }}
       >
+        <IoMdStats size="2rem" style={{ marginRight: "1rem" }}/>
         <Link
           style={{
             boxShadow: `none`,

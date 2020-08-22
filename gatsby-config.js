@@ -6,7 +6,7 @@ module.exports = {
       summary: ` a person and stuff, does things occasionally`,
     },
     description: `posting about what im thinking about or thought about at some point`,
-    siteUrl: `joypauls.github.io`,
+    siteUrl: `https://joypauls.github.io`,
     social: {
       twitter: ``,
     },
@@ -17,6 +17,8 @@ module.exports = {
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
+        // ignore: process.env.NODE_ENV === `production` && [`**/posts/drafts`],
+        // ignore: `${__dirname}/content/_blog`,
       },
     },
     {
@@ -52,6 +54,15 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-emojis`,
+            options: {
+              // In order to avoid pattern mismatch you can specify
+              // an escape character which will be prepended to the
+              // actual pattern (e.g. `#:poop:`).
+              // escapeCharacter : '%', // (default: '')
+            },
+          },
         ],
       },
     },
@@ -84,7 +95,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-theme-ui`,
-    `gatsby-remark-emoji`,
     
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

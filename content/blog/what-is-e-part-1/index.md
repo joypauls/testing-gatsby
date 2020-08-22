@@ -9,13 +9,15 @@ date: "2020-01-01"
 ## Before We Dive In
 
 
-$$e \approx 2.71828...$$
+$$
+e = 2.71828...
+$$
 
-**Euler's Number**, the number $$e$$, appears almost everywhere in mathematics and I mean that literally! If you're anything like me, you learned even before university courses to just accept $$e$$ as one of those weird special numbers in the same plane of existence as $$\pi$$. Like $$\pi$$, $$e$$ is a **transcendental number**, meaning that it is not algebraic and cannot be expressed as a fraction, among other properties. Now that isn't really what makes it special though - the set of transcendental numbers numbers is uncountable whereas the set of algebraic numbers is countable[^1]. What makes it special is just how often it pops up in seemingly disconnected applications. By the end of this series we will see clear and fascinating lines drawn from differential calculus to complex analysis to combinatorics, and $$\pi$$ itself - all connections courtesy of $$e$$. I won't be tracing it's historical roots[citation] - while just as interesting I'll instead be trying build up to a beautiful result (can you guess?) more or less in the order that the concepts are taught.
+**Euler's Number**, the number $$e$$, appears almost everywhere in mathematics and I mean that literally! We are taught to just accept $$e$$ as one of those weird special numbers living in the same plane of existence as $$\pi$$. Like $$\pi$$, $$e$$ is a **transcendental number**, meaning that it is not algebraic. Now that isn't really what makes it special though - the set of transcendental numbers numbers is uncountably infinite whereas the set of algebraic numbers is countable[^1]! What makes it special is just how often it pops up. By the end of this series we will see fascinating lines drawn from differential calculus to complex analysis to combinatorics, and $$\pi$$ itself - all these connections courtesy of $$e$$.
 
 To begin to understand what makes it special, humor me and try to forget everything you know about Euler's number.
 
-## Exponential Growth and Decay, from Scratch
+## Exponential Growth From Scratch
 
 Let's start by considering a family of functions with parameter $$a$$ that grow exponentially with respect to a variable $$t$$,
 
@@ -82,7 +84,7 @@ $$
 a \approx (1 + 0.000001)^{\frac{1}{0.000001}} \approx 2.71828... \approx e
 $$
 
-And we have finally arrived at our first definition of Euler's number! `:sparkles:`
+<span role="img" aria-label="sparkles">&#10024;</span>And we have finally arrived at our first definition of Euler's number!<span role="img" aria-label="sparkles">&#10024;</span>
 
 $$
 e = \lim_{h \to 0} (h+1)^{\frac{1}{h}}

@@ -15,6 +15,7 @@
     border-radius: 100px;
     position: relative;
     /* transition: background-color .2s; */
+    transition: background 0.25s ease 0s;
   }
   
   .react-switch-label .react-switch-button {
@@ -28,6 +29,7 @@
     /* transition: 0.1s; */
     background: #fff;
     box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+    /* transition: background-color 0.25s ease 0s, transform 0.25s ease 0s, box-shadow 0.15s ease 0s; */
   }
   
   .react-switch-checkbox:checked + .react-switch-label .react-switch-button {
