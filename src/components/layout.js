@@ -61,105 +61,74 @@ const MainHeader = ({...props}) => {
   );
 };
 
-const SecondaryHeader = ({...props}) => {
+const PageHeader = ({...props}) => {
   return (
-    <div>
-      <Flex
-        alignItems="center"
-        justifyContent="space-between"
-        padding="1rem"
-      >
-        <Box style={{ margin: rhythm(1), }}>
-          <h3 sx={{ display: "flex", alignItems: "center", color: "text", }}>
-            <IoMdStats sx={{color: "secondary"}} size="2rem" style={{ marginRight: "1rem" }}/>
-            <Link style={{ boxShadow: `none`, color: `inherit`, }} to={`/`}>
-              { props.title }
-            </Link>
-          </h3>
-          <h5 style={{ marginTop: 0, color: "inherit" }}>
-            { props.description }
-          </h5>
-        </Box>
-        <ModeSwitch mode={ props.colorMode } handleToggle={ () => props.setColorMode(props.nextColorMode) } />
-      </Flex>
-      <Flex alignItems="center" justifyContent="center" marginBottom="5rem">
-        <NavButton text="Categories" />
-        <NavButton text="Visualizations" />
-        <NavButton text="About" />
-      </Flex>
-    </div>
+    <h3 style={{ marginTop: 0, }}>
+      <Link style={{ boxShadow: `none`, color: `inherit`, }} to={`/`}>
+        { props.title }
+      </Link>
+    </h3>
   );
 };
 
+const Footer = () => {
+  return (
+    <h5>
+      { "made with ❤ by " }
+      <a href="https://github.com/joypauls">joypauls</a>
+    </h5>
+  );
+};
 
 const Layout = ({ location, title, description, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   let header;
 
+  // component state
   const [colorMode, setColorMode] = useColorMode();
   const nextColorMode = colorMode === 'default' ? 'dark' : 'default';
 
-  // const [value, setValue] = useState(false);
-
-
-
   if (location.pathname === rootPath) {
     // TODO: make this more elegant
-    header = <MainHeader 
-      title={title} 
-      description={description} 
-      colorMode={colorMode} 
-      nextColorMode={nextColorMode} 
-      setColorMode={setColorMode}  
-    />;
+    header = (
+      <MainHeader 
+        title={title} 
+        description={description} 
+        colorMode={colorMode} 
+        nextColorMode={nextColorMode} 
+        setColorMode={setColorMode}  
+      />
+    );
   } else {
     header = (
-      <h3
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h3>
+      <PageHeader title={title} />
     );
   }
   return (
     <Fragment>
       <BLMBanner />
-    
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(30),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      <header>{header}</header>
-      <main
+      <div
         style={{
-          display: "flex",
-          flexDirection: "column",
+          marginLeft: `auto`,
+          marginRight: `auto`,
+          maxWidth: rhythm(30),
+          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
         }}
-      >{children}</main>
-      <hr />
-      <footer>
-        {/* © {new Date().getFullYear()},  */}
-        <h5>
-          { "made with ❤ by " }
-          <a href="https://github.com/joypauls">joypauls</a>
-        </h5>
-      </footer>
-    </div>
+      >
+        
+        <header>{header}</header>
+        
+        <main style={{ display: "flex", flexDirection: "column", }}>
+          { children }
+        </main>
+        
+        <hr />
+        
+        <footer>
+          <Footer />
+        </footer>
+      
+      </div>
     </Fragment>
   );
 }
