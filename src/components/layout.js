@@ -31,10 +31,65 @@ const NavButton = ({ variant = "primary", ...props }) => {
   )
 };
 
-// const handleToggle = (nextMode, setNextMode) => {
-//   // setValue(nextValue);
-//   setNextMode(nextMode);
-// }
+const MainHeader = ({...props}) => {
+  return (
+    <div>
+      <Flex
+        alignItems="center"
+        justifyContent="space-between"
+        padding="1rem"
+      >
+        <Box style={{ margin: rhythm(1), }}>
+          <h3 sx={{ display: "flex", alignItems: "center", color: "text", }}>
+            <IoMdStats sx={{color: "secondary"}} size="2rem" style={{ marginRight: "1rem" }}/>
+            <Link style={{ boxShadow: `none`, color: `inherit`, }} to={`/`}>
+              { props.title }
+            </Link>
+          </h3>
+          <h5 style={{ marginTop: 0, color: "inherit" }}>
+            { props.description }
+          </h5>
+        </Box>
+        <ModeSwitch mode={ props.colorMode } handleToggle={ () => props.setColorMode(props.nextColorMode) } />
+      </Flex>
+      <Flex alignItems="center" justifyContent="center" marginBottom="5rem">
+        <NavButton text="Categories" />
+        <NavButton text="Visualizations" />
+        <NavButton text="About" />
+      </Flex>
+    </div>
+  );
+};
+
+const SecondaryHeader = ({...props}) => {
+  return (
+    <div>
+      <Flex
+        alignItems="center"
+        justifyContent="space-between"
+        padding="1rem"
+      >
+        <Box style={{ margin: rhythm(1), }}>
+          <h3 sx={{ display: "flex", alignItems: "center", color: "text", }}>
+            <IoMdStats sx={{color: "secondary"}} size="2rem" style={{ marginRight: "1rem" }}/>
+            <Link style={{ boxShadow: `none`, color: `inherit`, }} to={`/`}>
+              { props.title }
+            </Link>
+          </h3>
+          <h5 style={{ marginTop: 0, color: "inherit" }}>
+            { props.description }
+          </h5>
+        </Box>
+        <ModeSwitch mode={ props.colorMode } handleToggle={ () => props.setColorMode(props.nextColorMode) } />
+      </Flex>
+      <Flex alignItems="center" justifyContent="center" marginBottom="5rem">
+        <NavButton text="Categories" />
+        <NavButton text="Visualizations" />
+        <NavButton text="About" />
+      </Flex>
+    </div>
+  );
+};
 
 
 const Layout = ({ location, title, description, children }) => {
@@ -49,69 +104,14 @@ const Layout = ({ location, title, description, children }) => {
 
 
   if (location.pathname === rootPath) {
-    header = (
-      <div>
-        <Flex
-  alignItems='center'
-  justifyContent='space-between'
-  padding='1rem'>
-      <Box
-        style={{
-          // ...scale(1.2),
-          margin: rhythm(1),
-        }}
-      >
-        {/* <img src="https://img.icons8.com/ultraviolet/80/000000/normal-distribution-histogram.png"/> */}
-      <h3
-        style={{
-          // ...scale(1.2),
-          // marginBottom: rhythm(1.5),
-          // marginTop: 0,
-          display: "flex",
-          alignItems: "center",
-        }}
-        sx={{
-          color: "text",
-        }}
-      >
-        <IoMdStats sx={{color: "secondary"}} size="2rem" style={{ marginRight: "1rem" }}/>
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          { title }
-        </Link>
-      </h3>
-      <h5
-        style={{
-          // ...scale(1.2),
-          // marginBottom: rhythm(1.5),
-          marginTop: 0,
-          color: "inherit"
-        }}
-      >
-        { description }
-      </h5>
-      </Box>
-          <ModeSwitch mode={ colorMode } handleToggle={ () => setColorMode(nextColorMode) } />
-      </Flex>
-
-
-      
-  
-<Flex
-  alignItems='center'
-  justifyContent='center'
-  marginBottom='5rem'>
-      <NavButton text="Categories" />
-      <NavButton text="Visualizations" />
-      <NavButton text="About" />
-      </Flex>
-      </div>
-    )
+    // TODO: make this more elegant
+    header = <MainHeader 
+      title={title} 
+      description={description} 
+      colorMode={colorMode} 
+      nextColorMode={nextColorMode} 
+      setColorMode={setColorMode}  
+    />;
   } else {
     header = (
       <h3
@@ -130,7 +130,7 @@ const Layout = ({ location, title, description, children }) => {
           {title}
         </Link>
       </h3>
-    )
+    );
   }
   return (
     <Fragment>
@@ -154,8 +154,10 @@ const Layout = ({ location, title, description, children }) => {
       <hr />
       <footer>
         {/* © {new Date().getFullYear()},  */}
-        {'made with ❤ by '}
-        <a href="https://github.com/joypauls">joypauls</a>
+        <h5>
+          { "made with ❤ by " }
+          <a href="https://github.com/joypauls">joypauls</a>
+        </h5>
       </footer>
     </div>
     </Fragment>
