@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import React from "react";
+import { React, Fragment } from "react";
 import { PageProps, Link, graphql } from "gatsby";
 import { Button, Flex, Text, Box, Card } from "rebass";
 
@@ -15,6 +15,7 @@ type Data = {
     siteMetadata: {
       title: string
       description: string
+      isUp: boolean
     }
   }
   allMarkdownRemark: {
@@ -78,30 +79,65 @@ const PostCard = ({...props}) => {
   );
 };
 
+// const BlogContent = () =>
+
+const SiteDownContent = () => {
+  return (
+    <Fragment>
+      <div
+        style={{
+          marginLeft: `auto`,
+          marginRight: `auto`,
+          maxWidth: rhythm(30),
+          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+        }}
+      >
+        <header>
+          <h3>Working on it!</h3>
+        </header>
+        <main style={{ display: "flex", flexDirection: "column", }}>
+          <h5>sdngjksfdgnjdkgfbnjkn</h5>
+        </main>
+      </div>
+    </Fragment>
+  );
+};
+
 const BlogIndex = ({ data, location }: PageProps<Data>) => {
 
   const siteTitle = data.site.siteMetadata.title;
   const siteDescription = data.site.siteMetadata.description;
   const posts = data.allMarkdownRemark.edges;
+  const siteIsUp = data.site.siteMetadata.isUp;
 
-  return (
-    <Layout location={location} title={siteTitle} description={siteDescription}>
-      <SEO title="All posts" />
-      {/* <Bio /> */}
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <PostCard
-            title={node.frontmatter.title}
-            slug={node.fields.slug}
-            description={node.frontmatter.description}
-            excerpt={node.excerpt}
-            date={node.frontmatter.date}
-          />
-        )
-      })}
-    </Layout>
-  );
+  let content;
+
+  if (siteIsUp) {
+    content = (
+      <Layout location={location} title={siteTitle} description={siteDescription}>
+        <SEO title="All posts" />
+        {/* <Bio /> */}
+        {posts.map(({ node }) => {
+          const title = node.frontmatter.title || node.fields.slug;
+          return (
+            <PostCard
+              title={node.frontmatter.title}
+              slug={node.fields.slug}
+              description={node.frontmatter.description}
+              excerpt={node.excerpt}
+              date={node.frontmatter.date}
+            />
+          );
+        })}
+      </Layout>
+    );
+  } else {
+    content = (
+      <SiteDownContent />
+    );
+  }
+
+  return ( content );
 };
 
 export default BlogIndex;
@@ -113,6 +149,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         description
+        isUp
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {

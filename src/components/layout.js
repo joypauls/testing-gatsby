@@ -7,7 +7,7 @@ import { rhythm, scale } from "../utils/typography";
 import { Button, Flex, Text, Box } from "rebass";
 import { IoMdStats } from "react-icons/io";
 
-import ModeSwitch from "./misc/ModeSwitch/ModeSwitch.js";
+import ModeSwitch from "./ModeSwitch/ModeSwitch.js";
 import BLMBanner from "./banner.js";
 
 
