@@ -81,10 +81,14 @@ $$
 We now have a statement for $$a$$ with constant of proportionately equal to $$1$$: $$a = \lim_{h \to 0} (h+1)^{\frac{1}{h}}$$. Let's get an approximation of $$a$$ with a small $$h$$:
 
 $$
-a \approx (1 + 0.000001)^{\frac{1}{0.000001}} \approx 2.71828... \approx e
+\begin{aligned}
+a &\approx (1 + 0.000001)^{\frac{1}{0.000001}} \\
+&\approx 2.71828... \\
+&\approx e
+\end{aligned}
 $$
 
-<span role="img" aria-label="sparkles">&#10024;</span>And we have finally arrived at our first definition of Euler's number!<span role="img" aria-label="sparkles">&#10024;</span>
+<span role="img" aria-label="sparkles">&#10024;</span>And here's our first definition of Euler's number!<span role="img" aria-label="sparkles">&#10024;</span>
 
 $$
 e = \lim_{h \to 0} (h+1)^{\frac{1}{h}}

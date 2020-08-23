@@ -8,6 +8,7 @@ import { Button, Flex, Text, Box } from "rebass";
 import { IoMdStats } from "react-icons/io";
 
 import ModeSwitch from "./misc/ModeSwitch/ModeSwitch.js";
+import BLMBanner from "./banner.js";
 
 
 const NavButton = ({ variant = "primary", ...props }) => {
@@ -133,29 +134,7 @@ const Layout = ({ location, title, description, children }) => {
   }
   return (
     <Fragment>
-    <div
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        backgroundColor: "#000000",
-        width: "100%",
-      }}
-    >
-      <div 
-        style={{
-          width: "800px", 
-       margin: "0 auto", 
-       padding: "10px",
-       border: "1px solid #000",
-       textAlign: "center"
-        }}
-      >
-        <h3 style={{color: "#FFFFFF", margin: 0,}}>
-        Black Lives Matter
-        </h3>
-      </div>
-    </div>
+      <BLMBanner />
     
     <div
       style={{
