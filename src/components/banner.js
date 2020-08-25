@@ -3,10 +3,16 @@ import { jsx } from "theme-ui";
 
 import React from "react";
 import { Button, Flex, Text, Box } from "rebass";
+import { Link } from "gatsby";
 
 
 const DonateButton = ({...props}) => {
     return (
+        <a 
+          href="https://secure.actblue.com/donate/movement-4-black-lives-1"
+          target="_blank"
+          style={{ backgroundImage: "none", }}
+        >
         <Button 
           sx={{
             appearance: "none",
@@ -27,6 +33,7 @@ const DonateButton = ({...props}) => {
         >
           { props.text }
         </Button>
+        </a>
     )
 };
 
@@ -62,9 +69,9 @@ const Banner = ({...props}) => {
 };
 
 const BLMBanner = () => {
-    const statement = "Black Lives Matter";
+    const statement = "Black Lives Matter.";
     const callToAction = <DonateButton text="Donate" />
-    return ( <Banner statement={ statement} callToAction={ callToAction } /> );
+    return ( <Banner statement={ statement } callToAction={ callToAction } /> );
 };
 
 export default BLMBanner;

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { React, Fragment } from "react";
+import { Fragment } from "react";
 import { PageProps, Link, graphql } from "gatsby";
 import { Button, Flex, Text, Box, Card } from "rebass";
 
@@ -8,6 +8,8 @@ import Bio from "../components/bio";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { rhythm } from "../utils/typography";
+
+import Placeholder from "../components/placeholder";
 
 // post data from graphql
 type Data = {
@@ -99,6 +101,9 @@ const SiteDownContent = () => {
           <h5>sdngjksfdgnjdkgfbnjkn</h5>
         </main>
       </div>
+
+      <Placeholder />
+
     </Fragment>
   );
 };

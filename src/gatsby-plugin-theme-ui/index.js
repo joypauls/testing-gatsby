@@ -5,6 +5,7 @@ export default {
       background: "#f5f0f4",
       primary: "#8b32eb",
       secondary: "#e86d84",
+      primaryLight: "#c3a0e8",
     //   accent: "#ff7891",
       modes: {
         dark: {

@@ -1,2 +1,2 @@
 run-dev:
-	gatsby develop
+	npm run develop
